@@ -1,0 +1,39 @@
+#!/bin/bash
+
+#$ -M ywang50@nd.edu # Email address for job notification
+#$ -m abe            # Send mail when job begins, ends and aborts
+#$ -pe smp 6        # Specify parallel environment and legal core size
+#$ -q long           # Specify queue
+#$ -N EHR1            # Specify job name
+
+# Parameters for numpy/PyTorch not to run over multiple threads
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export OMP_NUM_THREADS=1
+
+ # Load Modules
+module load python     
+module load pytorch
+
+cd Private/DP-normalizing-flow
+
+python EHR.py --data 1 --sigma 8.58 --start 1 --end 5 &
+python EHR.py --data 1 --sigma 9.90 --start 1 --end 5 &
+python EHR.py --data 1 --sigma 11.94 --start 1 --end 5 &
+python EHR.py --data 1 --sigma 15.67 --start 1 --end 5 &
+python EHR.py --data 2 --sigma 8.58 --start 1 --end 5 &
+python EHR.py --data 2 --sigma 9.90 --start 1 --end 5 &
+python EHR.py --data 2 --sigma 11.94 --start 1 --end 5 &
+python EHR.py --data 2 --sigma 15.67 --start 1 --end 5 &
+python EHR.py --data 3 --sigma 8.58 --start 1 --end 5 &
+python EHR.py --data 3 --sigma 9.90 --start 1 --end 5 &
+python EHR.py --data 3 --sigma 11.94 --start 1 --end 5 &
+python EHR.py --data 3 --sigma 15.67 --start 1 --end 5 &
+python EHR.py --data 4 --sigma 8.58 --start 1 --end 5 &
+python EHR.py --data 4 --sigma 9.90 --start 1 --end 5 &
+python EHR.py --data 4 --sigma 11.94 --start 1 --end 5 &
+python EHR.py --data 4 --sigma 15.67 --start 1 --end 5 &
+python EHR.py --data 5 --sigma 8.58 --start 1 --end 5 &
+python EHR.py --data 5 --sigma 9.90 --start 1 --end 5 &
+python EHR.py --data 5 --sigma 11.94 --start 1 --end 5 &
+python EHR.py --data 5 --sigma 15.67 --start 1 --end 5 
